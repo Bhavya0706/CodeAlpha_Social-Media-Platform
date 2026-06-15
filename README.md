@@ -237,18 +237,17 @@ Profile Management
 
 ## 📸 Screens Included
 
+✅ Profile Page
+![profile](screenshots/profile_(1).png)
 
 ✅ Feed Page
 ![Feed](screenshots/feed.png)
 
 ✅ Create Post Page
-![create post](screenshots/create post.png)
-
-✅ Profile Page
-![profile](screenshots/profile (1).png)
+![create post](screenshots/create_post.png)
 
 ✅ Followers / Following Modal
-![followers](screenshots/followers list.png)
+![followers](screenshots/followers_list.png)
 
 
 
