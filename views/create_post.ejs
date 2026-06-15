@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Post | SocialHub</title>
+  <link rel="stylesheet" href="/css/create_post.css">
+</head>
+<body>
+
+  <%- include("partials/nav.ejs") %>
+
+  <main class="create-container">
+
+    <div class="create-card">
+      <h2>Create New Post</h2>
+      <p class="subtitle">Upload a photo and write a caption</p>
+
+      <% if (typeof error !== "undefined" && error) { %>
+        <div class="error-box"><%= error %></div>
+      <% } %>
+
+      <form action="/create_post" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+          <label>Post Photo</label>
+          <input type="file" name="postImage" accept="image/*" required>
+        </div>
+
+        <div class="form-group">
+          <label>Caption</label>
+          <textarea 
+            name="caption" 
+            placeholder="Write something about your post..."
+            rows="5"
+          ></textarea>
+        </div>
+
+        <button type="submit">Share Post</button>
+
+      </form>
+    </div>
+
+  </main>
+
+</body>
+</html>

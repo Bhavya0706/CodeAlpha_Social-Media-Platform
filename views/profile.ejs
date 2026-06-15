@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile | SocialHub</title>
+  <link rel="stylesheet" href="/css/profile.css">
+  <style>
+    .profile-post-card{
+    position: relative;
+}
+.delete-post{
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
+
+.delete-btn{
+    width: 36px;
+    height: 36px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0,0,0,0.6);
+    color: white;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.delete-btn:hover{
+    background: #e53935;
+    transform: scale(1.08);
+}
+  </style>
+</head>
+<body>
+
+  <%- include("partials/nav.ejs") %>
+
+  <main class="profile-container">
+
+    <section class="profile-header">
+
+      <div class="profile-image-box">
+        <img 
+          src="<%= user.profileImage || '/images/default-image.png' %>" 
+          alt="profile image"
+          class="profile-image"
+        >
+      </div>
+
+      <div class="profile-info">
+
+        <div class="profile-top">
+          <h2><%= user.name %></h2>
+          <a href="/edit_profile" class="edit-btn">Edit Profile</a>
+        </div>
+
+   
+        <div class="profile-stats">
+            <span><strong><%= posts.length %></strong> posts</span>
+          
+            <span onclick="openList('followers')" class="click-stat">
+              <strong><%= user.followers ? user.followers.length : 0 %></strong> followers
+            </span>
+          
+            <span onclick="openList('following')" class="click-stat">
+              <strong><%= user.following ? user.following.length : 0 %></strong> following
+            </span>
+          </div>
+
+        <div class="profile-bio">
+          <h4><%= user.name %></h4>
+          <p><%= user.bio || "No bio added yet." %></p>
+        </div>
+
+      </div>
+
+    </section>
+
+    <div class="profile-tabs">
+      <span class="active-tab">▦ POSTS</span>
+    </div>
+
+   
+        <section class="profile-posts">
+
+            <% if (posts.length === 0) { %>
+          
+              <div class="empty-posts">
+                <div class="camera-icon">📷</div>
+                <h2>Share Photos</h2>
+                <p style="color: black;">When you share photos, they will appear on your profile.</p>
+                <a href="/create_post">Share your first photo</a>
+              </div>
+          
+            <% } else { %>
+          
+              <div class="profile-feed">
+          
+                <% posts.forEach((post) => { %>
+          
+                  <div class="profile-post-card">
+          
+                    <div class="mini-post-header">
+                      <img src="<%= user.profileImage  || '/images/default-image.png'  %>" class="mini-avatar">
+                      <div>
+                        <h4><%= user.name %></h4>
+                        <p><%= post.createdAt ? new Date(post.createdAt.$date || post.createdAt).toDateString() : "Just now" %></p>
+                      </div>
+                    </div>
+          
+                    <img src="<%= post.image %>" class="mini-post-image" alt="post image">
+          
+                    <p class="mini-caption"><%= post.caption %></p>
+          
+                    <div class="mini-actions">
+                        <form class="like-form" data-post-id="<%= post._id %>">
+                            <button type="submit" class="like-btn">
+                              <span class="heart">
+                                <%= post.likes.some(id => id.toString() === user._id.toString()) ? "❤️" : "♡" %>
+                              </span>
+                              <span class="like-count"><%= post.likes.length %></span>
+                              Like
+                            </button>
+                          </form>
+                          <button 
+                          type="button" 
+                          style="background-color: azure; border-color: white;"
+                          class="comment-btn"
+                          onclick='openComments("<%= post._id %>")'>
+                          💬 <span id="comment-count-<%= post._id %>"><%= post.comments.length %></span> Comments
+                        </button>
+                    
+                    </div>
+
+                    <div class="delete-post">
+
+                        <form action="/post/delete/<%= post._id %>" method="POST">
+                            <button type="submit" class="delete-btn">
+                                🗑️
+                            </button>
+                        </form>
+                    
+                    </div>
+          
+                  </div>
+          
+                <% }) %>
+          
+              </div>
+          
+            <% } %>
+          
+          </section>
+
+
+    </section>
+    <div id="overlay" class="modal-overlay" onclick="closeList()"></div>
+
+    <div id="listCard" class="list-card">
+      <div class="list-header">
+        <h3 id="listTitle">Followers</h3>
+        <button onclick="closeList()">×</button>
+      </div>
+    
+      <div class="search-box">
+        <input type="text" placeholder="Search">
+      </div>
+    
+      <div id="listContent" class="list-content"></div>
+    </div>
+
+  </main>
+  
+  <div id="commentOverlay" class="modal-overlay" onclick="closeComments()"></div>
+
+  <div id="commentCard" class="comment-card">
+    <div class="comment-header">
+      <h3>Comments</h3>
+      <button onclick="closeComments()">×</button>
+    </div>
+  
+    <form id="commentForm" class="comment-input-box">
+      <input type="text" id="commentInput" placeholder="Add a comment..." required>
+      <button type="submit">Post</button>
+    </form>
+  
+    <div id="commentList" class="comment-list"></div>
+  </div>
+  
+  <script>
+      const allPosts = <%- JSON.stringify(posts) %>;
+  const followers = <%- JSON.stringify(user.followers || []) %>;
+  const following = <%- JSON.stringify(user.following || []) %>;</script>
+<script src="/js/profile.js"></script>
+</body>
+</html>

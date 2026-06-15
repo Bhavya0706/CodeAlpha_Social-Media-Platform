@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Social Media App</title>
+
+  <link rel="stylesheet" href="/css/auth.css" />
+</head>
+<body>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <div class="auth-left">
+        <div class="brand-box">
+          <h1>Social<span>Hub</span></h1>
+          <p>Connect with friends, share your moments, and explore posts from people around you.</p>
+        </div>
+      </div>
+
+      <div class="auth-right">
+        <div class="form-header">
+          <h2>Welcome Back</h2>
+          <p>Login to continue to your account</p>
+        </div>
+
+        <form action="/login" method="POST" class="auth-form">
+
+            <% if (typeof error !== "undefined" && error) { %>
+                <div class="message-box error-message">
+                
+                  <p style="color: red;"> ! <%= error %></p>
+                </div>
+              <% } %>
+
+          <div class="input-group">
+            <label>Email Address</label>
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="input-group">
+            <label>Password</label>
+            <input 
+              type="password" 
+              name="password" 
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="auth-btn">Login</button>
+
+          <p class="switch-text">
+            Don’t have an account?
+            <a href="/register">Create account</a>
+          </p>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

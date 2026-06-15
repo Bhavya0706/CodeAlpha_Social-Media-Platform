@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.13);
+  top: 90px;
+  left: 160px;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  background: rgba(255, 211, 105, 0.16);
+  bottom: 80px;
+  right: 160px;
+}
+
+.welcome-card {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(255, 255, 255, 0.17);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 26px;
+  padding: 50px 38px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(16px);
+  position: relative;
+  z-index: 1;
+}
+
+.welcome-card h1 {
+  font-size: 40px;
+  margin-bottom: 16px;
+  letter-spacing: -0.8px;
+}
+
+.welcome-card p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #f2f2f2;
+  margin-bottom: 32px;
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.button-box a {
+  text-decoration: none;
+  padding: 13px 34px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.login-btn {
+  background: white;
+  color: #667eea;
+}
+
+.signup-btn {
+  background: #ffd369;
+  color: #222;
+}
+
+.button-box a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 550px) {
+  .welcome-card {
+    padding: 40px 24px;
+  }
+
+  .welcome-card h1 {
+    font-size: 31px;
+  }
+
+  .welcome-card p {
+    font-size: 15px;
+  }
+
+  .button-box {
+    flex-direction: column;
+  }
+}
+    </style>
+</head>
+<body>
+
+    <div class="welcome-card">
+      <h1>Welcome to Our Social Media</h1>
+  
+      <p>
+        Welcome, new users! Join our social media platform and start connecting with people today.
+      </p>
+  
+      <div class="button-box">
+        <a href="/login" class="login-btn">Login</a>
+        <a href="/register" class="signup-btn">Sign Up</a>
+      </div>
+    </div>
+  
+  </body>
+</html>

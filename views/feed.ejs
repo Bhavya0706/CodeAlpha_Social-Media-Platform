@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feed | SocialHub</title>
+  <link rel="stylesheet" href="/css/feed.css">
+</head>
+<body>
+
+ <%- include('partials/nav.ejs') %>
+
+  <main class="feed-container">
+
+    <div class="feed-tabs">
+        <a href="/feed?type=all" class="tab-btn <%if(type == 'all'){  %>   active   <%  }  %>">
+            All Posts
+        </a>
+    
+        <a href="/feed?type=following" class="tab-btn <%if(type == 'following'){  %>   active  <%  }  %>">
+            Following
+        </a>
+    </div>
+
+    <section class="posts-list">
+
+        <% if (posts.length === 0) { %>
+          <div class="post-card">
+            <p class="post-text">No posts available.</p>
+          </div>
+        <% } %>
+      
+        <% posts.forEach((post) => { %>
+      
+          <div class="post-card">
+      
+            <div class="post-header">
+              <img src="<%= post.user.profileImage %>" class="avatar small" alt="profile">
+      
+              <div>
+                <h4><%= post.user.name %></h4>
+                <p>
+                    <%= post.createdAt 
+                        ? new Date(post.createdAt.$date || post.createdAt).toDateString() 
+                        : "Just now" 
+                    %>
+                  </p>
+              </div>
+              <% if (post.user && post.user._id.toString() !== user.id.toString()) { %>
+
+          <form class="follow-form" data-user-id="<%= post.user._id %>">
+  <button type="submit" class="follow-btn">
+    <%= (user.following || []).some(id => id.toString() === post.user._id.toString()) ? "Following" : "Follow" %>
+  </button>
+</form>
+              
+              <% } %>
+            </div>
+       
+      
+            <img src="<%= post.image %>" class="post-image" alt="post image">
+      
+            <p class="post-text">
+              <%= post.caption %>
+            </p>
+      
+            <div class="post-actions">
+                <form class="like-form" data-post-id="<%= post._id %>">
+                    <button type="submit" class="like-btn">
+                      <span class="heart">
+                        <%= post.likes.some(id => id.toString() === user._id.toString()) ? "❤️" : "♡" %>
+                      </span>
+                      <span class="like-count"><%= post.likes.length %></span>
+                      Like
+                    </button>
+                  </form>
+      
+                  <button 
+                  type="button" 
+                  class="comment-btn"
+                  onclick='openComments("<%= post._id %>")'>
+                  💬 <span id="comment-count-<%= post._id %>"><%= post.comments.length %></span> Comments
+                </button>
+            </div>
+      
+           
+      
+          </div>
+      
+        <% }) %>
+      
+      </section>
+
+  </main>
+
+  <div id="commentOverlay" class="modal-overlay" onclick="closeComments()"></div>
+
+<div id="commentCard" class="comment-card">
+  <div class="comment-header">
+    <h3>Comments</h3>
+    <button onclick="closeComments()">×</button>
+  </div>
+
+  <form id="commentForm" class="comment-input-box">
+    <input type="text" id="commentInput" placeholder="Add a comment..." required>
+    <button type="submit">Post</button>
+  </form>
+
+  <div id="commentList" class="comment-list"></div>
+</div>
+ <script>
+    const allPosts = <%- JSON.stringify(posts) %>;
+  </script>
+  
+  <script src="/js/feed.js"></script>
+<script src="/js/feed.js"> </script>
+</body>
+</html>

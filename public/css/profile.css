@@ -1,0 +1,483 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  
+  body {
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+  }
+  
+  .profile-container {
+    max-width: 980px;
+    margin: 45px auto;
+    padding: 0 20px;
+  }
+  
+  .profile-header {
+    display: flex;
+    gap: 55px;
+    align-items: center;
+    margin-bottom: 45px;
+  }
+  
+  .profile-image-box {
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0f1419;
+  }
+  
+  .profile-info {
+    flex: 1;
+  }
+  
+  .profile-top {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-top h2 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+  
+  .edit-btn {
+    text-decoration: none;
+    background: #262b31;
+    color: white;
+    padding: 9px 28px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .edit-btn:hover {
+    background: #333941;
+  }
+  
+  .profile-stats {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 22px;
+    font-size: 15px;
+  }
+  
+  .profile-stats strong {
+    margin-right: 5px;
+  }
+  
+  .profile-bio h4 {
+    font-size: 15px;
+    margin-bottom: 6px;
+  }
+  
+  .profile-bio p {
+    font-size: 15px;
+    color: #000000;
+  }
+  
+  .profile-tabs {
+    border-top: 1px solid #2b3036;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+  }
+  
+  .profile-tabs span {
+    padding: 16px 26px;
+    color: #aaa;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .active-tab {
+    color: white !important;
+    border-top: 2px solid white;
+  }
+  
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+  
+  .grid-post {
+    aspect-ratio: 1 / 1;
+    background: #222;
+    overflow: hidden;
+  }
+  
+  .grid-post img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .empty-posts {
+    text-align: center;
+    margin-top: 55px;
+  }
+  
+  .camera-icon {
+    width: 68px;
+    height: 68px;
+    border: 2px solid white;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+  }
+  
+  .empty-posts h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+  }
+  
+  .empty-posts p {
+    font-size: 15px;
+    color: #ddd;
+    margin-bottom: 18px;
+  }
+  
+  .empty-posts a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 700;
+  }
+  
+  @media (max-width: 700px) {
+    .profile-header {
+      gap: 25px;
+      align-items: flex-start;
+    }
+  
+    .profile-image-box {
+      width: 95px;
+      height: 95px;
+    }
+  
+    .profile-top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  
+    .profile-stats {
+      gap: 14px;
+      font-size: 13px;
+    }
+  
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .navbar {
+    height: 70px;
+    background: white;
+    padding: 0 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .navbar h2 {
+    color: #667eea;
+  }
+  
+  .navbar h2 span {
+    color: #764ba2;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    margin-left: 18px;
+    color: #555;
+    font-weight: 600;
+  }
+  
+  .navbar a:hover {
+    color: #667eea;
+  }
+  .profile-feed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+  
+  .profile-post-card {
+    background: #ffffff;
+    border: 1px solid #b6c4d4;
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 24px;
+  }
+  
+  .mini-post-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  
+  .mini-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .mini-post-header h4 {
+    font-size: 15px;
+  }
+  
+  .mini-post-header p {
+    font-size: 12px;
+    color: #292929;
+  }
+  .mini-post-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    height: auto;
+    margin: 0;
+    border-radius: 8px;
+}
+  
+  .mini-caption {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  
+  .mini-actions {
+    display: flex;
+    gap: 18px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .click-stat {
+    cursor: pointer;
+  }
+  
+  .click-stat:hover {
+    color: #667eea;
+  }
+  
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 999;
+  }
+  
+  .list-card {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    width: 430px;
+    max-height: 520px;
+    background: #26282d;
+    border-radius: 18px;
+    color: white;
+    z-index: 1000;
+    overflow: hidden;
+  }
+  
+  .list-header {
+    height: 52px;
+    border-bottom: 1px solid #3a3d42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .list-header h3 {
+    font-size: 16px;
+  }
+  
+  .list-header button {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .search-box {
+    padding: 12px 14px;
+  }
+  
+  .search-box input {
+    width: 100%;
+    background: #3a3a3a;
+    border: none;
+    outline: none;
+    border-radius: 9px;
+    padding: 10px 14px;
+    color: white;
+  }
+  
+  .list-content {
+    max-height: 390px;
+    overflow-y: auto;
+    padding: 5px 14px 14px;
+  }
+  
+  .list-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+  }
+  
+  .list-user img {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .list-user span {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .empty-list {
+    text-align: center;
+    color: #aaa;
+    padding: 30px 0;
+  }
+
+  .like-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    color: #555;
+    font-size: 15px;
+  }
+  
+  .heart {
+    font-size: 20px;
+    margin-right: 4px;
+  }
+
+  .comment-card {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  
+    width: 430px;
+    max-height: 540px;
+    background: #26282d;
+    border-radius: 18px;
+    color: white;
+    z-index: 1000;
+    overflow: hidden;
+  }
+  
+  .comment-header {
+    height: 52px;
+    border-bottom: 1px solid #3a3d42;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .comment-header button {
+    position: absolute;
+    right: 16px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .comment-input-box {
+    display: flex;
+    gap: 10px;
+    padding: 14px;
+    border-bottom: 1px solid #3a3d42;
+  }
+  
+  .comment-input-box input {
+    flex: 1;
+    background: #3a3a3a;
+    border: none;
+    outline: none;
+    border-radius: 9px;
+    padding: 10px 14px;
+    color: white;
+  }
+  
+  .comment-input-box button {
+    border: none;
+    background: #667eea;
+    color: white;
+    border-radius: 9px;
+    padding: 0 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .comment-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 10px 14px;
+  }
+  
+  .comment-user {
+    display: flex;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #36393f;
+  }
+  
+  .comment-user img {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .comment-user strong {
+    font-size: 14px;
+  }
+  
+  .comment-user p {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #ddd;
+  }

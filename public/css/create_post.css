@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+  
+  body {
+    background: #f4f6fb;
+    color: #222;
+  }
+  
+  .create-container {
+    max-width: 650px;
+    margin: 45px auto;
+    padding: 0 18px;
+  }
+  
+  .create-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.07);
+  }
+  
+  .create-card h2 {
+    color: #667eea;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  
+  .subtitle {
+    color: #777;
+    margin-bottom: 28px;
+  }
+  
+  .form-group {
+    margin-bottom: 22px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 9px;
+  }
+  
+  .form-group input[type="file"] {
+    width: 100%;
+    padding: 14px;
+    border: 1.5px dashed #c9cdf5;
+    border-radius: 14px;
+    background: #f8f9ff;
+    cursor: pointer;
+  }
+  
+  .form-group textarea {
+    width: 100%;
+    resize: none;
+    border: 1.5px solid #ddd;
+    outline: none;
+    border-radius: 14px;
+    padding: 14px;
+    font-size: 15px;
+    background: #f8f9fd;
+  }
+  
+  .form-group textarea:focus {
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+  }
+  
+  button {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.25s ease;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(102, 126, 234, 0.28);
+  }
+  
+  .error-box {
+    background: #fff0f0;
+    color: #c0392b;
+    border: 1px solid #ffc7c7;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  } 
+  .navbar {
+    height: 70px;
+    background: white;
+    padding: 0 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  
+  .navbar h2 {
+    color: #667eea;
+  }
+  
+  .navbar h2 span {
+    color: #764ba2;
+  }
+  
+  .navbar a {
+    text-decoration: none;
+    margin-left: 18px;
+    color: #555;
+    font-weight: 600;
+  }
+  
+  .navbar a:hover {
+    color: #667eea;
+  }
